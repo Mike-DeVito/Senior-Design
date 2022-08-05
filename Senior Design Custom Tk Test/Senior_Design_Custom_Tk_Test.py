@@ -19,7 +19,7 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 
 root = customtkinter.CTk()
 root.geometry("640x480") # Defining the base window size and creating window
-#root.attributes('-fullscreen', True)
+root.attributes('-fullscreen', True)
 screen_width = root.winfo_screenwidth() # Grabbing screen size data for sizing needs in the future.
 screen_height = root.winfo_screenheight()
 
@@ -27,11 +27,11 @@ image_frame = customtkinter.CTkFrame(root, height = screen_width, width = screen
 image_frame.pack() # Starting and sending main frame to screen to write on.
 
 # Loading all images from local storage.
-my_img1 = ImageTk.PhotoImage(Image.open("Part 1.png"))
-my_img2 = ImageTk.PhotoImage(Image.open("Part 2.png"))
-my_img3 = ImageTk.PhotoImage(Image.open("Part 3.png"))
-my_img4 = ImageTk.PhotoImage(Image.open("Part 4.png"))
-my_img5 = ImageTk.PhotoImage(Image.open("Part 5.png"))
+my_img1 = ImageTk.PhotoImage(Image.open("/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Part 1.png"))
+my_img2 = ImageTk.PhotoImage(Image.open("/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Part 2.png"))
+my_img3 = ImageTk.PhotoImage(Image.open("/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Part 3.png"))
+my_img4 = ImageTk.PhotoImage(Image.open("/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Part 4.png"))
+my_img5 = ImageTk.PhotoImage(Image.open("/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Part 5.png"))
 
 # Texted used for each label, each label is bound to each image by the later functions.
 label1 = "Check your surroundings. If the person is in a dangerous area DO NOT attempt to move them. \n Call 9-1-1 immediately."
@@ -40,11 +40,11 @@ label3 = "Try to place the person of the stretcher. If you cannot try and roll t
 label4 = "Attach the wrist module to the right wrist of the person. \n Try to place it along the inside of their arm."
 label5 = "Strap the person down if possible to the board. \n If they are securely placed then click next."
 
-audio1 = 'Voice1.wav'
-audio2 = 'Voice2.wav'
-audio3 = 'Voice3.wav'
-audio4 = 'Voice4.wav'
-audio5 = 'Voice5.wav'
+audio1 = '/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Voice1.wav'
+audio2 = '/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Voice2.wav'
+audio3 = '/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Voice3.wav'
+audio4 = '/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Voice4.wav'
+audio5 = '/home/raspberry/Senior Design/Senior-Design/Senior Design Custom Tk Test/Voice5.wav'
 
 audio_list = [audio1, audio2, audio3, audio4, audio5]
 label_list = [label1, label2, label3, label4, label5]
@@ -103,18 +103,18 @@ def create_analytics():
 	xar1 = []
 	yar1 = []
 	
-	force_fig = plt.figure(figsize=(2, 1.5), dpi=100)
+	force_fig = plt.figure(figsize=(1, 0.5), dpi=100)
 	ax2 = force_fig.add_subplot(1, 1, 1)
 	ax2.set_ylim(0,200)
 	line2, = ax2.plot(xar1, yar1, 'b', marker='o')
 
-	heart_rate_fig = plt.figure(figsize=(2, 1.5), dpi=100)
+	heart_rate_fig = plt.figure(figsize=(1, 0.5), dpi=100)
 	ax1 = heart_rate_fig.add_subplot(1, 1, 1)
 	ax1.set_ylim(0, 100)
 	line, = ax1.plot(xar, yar, 'r', marker='o')
 
 	if __name__ == '__main__':
-		ser = serial.Serial('COM4', 9600, timeout=1)
+		ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 		ser.reset_input_buffer()
 	
 	global xcount
