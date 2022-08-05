@@ -18,12 +18,12 @@ customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 root = customtkinter.CTk()
-root.geometry("640x480") # Defining the base window size and creating window
+root.geometry("800x480") # Defining the base window size and creating window
 root.attributes('-fullscreen', True)
 screen_width = root.winfo_screenwidth() # Grabbing screen size data for sizing needs in the future.
 screen_height = root.winfo_screenheight()
 
-image_frame = customtkinter.CTkFrame(root, height = screen_width, width = screen_height)
+image_frame = customtkinter.CTkFrame(root, height = screen_height, width = screen_width)
 image_frame.pack() # Starting and sending main frame to screen to write on.
 
 # Loading all images from local storage.
@@ -131,7 +131,6 @@ def create_analytics():
 			xcount = xcount + 1
 			ax1.set_ylim(0, max(yar))
 			ax1.set_xlim(0, xcount)
-			heart_rate.set_text(str(data))
 			piston_speed.set_text(str(random.randint(100,120)))
 			
 	def animate_force(piston_count)	:
@@ -186,7 +185,7 @@ def forward(image_number):
 		#if forward.has_been_called or back.has_been_called:
 			#my_audio.stop()
 
-		button_forward.place(relx = (5/6), rely = 0)
+		button_forward.place(relx = 0.9, rely = 0)
 		button_back.place(relx = 0, rely = 0)
 
 		forward.has_been_called = True
@@ -216,7 +215,7 @@ def back(image_number):
 	if image_number == 1:
 		button_back = customtkinter.CTkButton(image_frame, text="<<", state= tkinter.DISABLED, text_font = ("Times New Roman", 25))
 
-	button_forward.place(relx = (5/6), rely = 0)
+	button_forward.place(relx = 0.9, rely = 0)
 	button_back.place(relx = 0, rely = 0)
 	back.has_been_called = True
 	pass
@@ -228,8 +227,8 @@ button_exit = customtkinter.CTkButton(image_frame, text="Exit Program", command=
 button_forward = customtkinter.CTkButton(image_frame, text=">>", height = screen_height, width = (screen_width/10), text_font = ("Times New Roman", 25), command=lambda: forward(2))
 
 button_back.place(relx = 0, rely = 0)
-button_exit.place(relx = 0.5, rely = 0.90)
-button_forward.place(relx = (5/6), rely = 0)
+button_exit.place(relx = 0.4, rely = 0.90)
+button_forward.place(relx = 0.9, rely = 0)
 
 my_audio = sa.WaveObject.from_wave_file(audio1)
 my_audio.play()
